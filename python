@@ -1,0 +1,171 @@
+1.如果字符串中需要撇号，请使用双引号。
+例："Python's a great language"
+
+2.类型的强制转换：Int(Item)将Item转换为int。
+Float(Item)将Item转换为Float
+
+3.在python里面5/4=1.25,5//4=1,5**4=625(5的四次方)
+
+4.字符串的特定元素由方括号[]括起来的元素的索引访问
+hello_str = 'Hello World'
+
+print(hello_str[1])  => prints e
+
+print(hello_str[-1]) => prints d
+
+print(hello_str[11]) => ERROR
+
+5.切片是选择整个序列的子序列的能力,hellostring="hello world",若hellostring[6:10]就是worl(因为中间有个空格,而且切片这个方法是从6开始，在小于10的
+时候结束，也就是在9的时候结束) hellostring[:5]也就是从一开始到小于5的地方，就是"hello",hellostring[6:]也就是6开始到小于-1的地方(-1是最后一个字符
+"d"的下一位，所以此输出的东西就是world）
+还可以使用三个参数[start:stop:step]：s = 'hello world'       s[0:11:2]== 'hlowrd'(从0开始到小于11的地方，且每次跳两个字符)
+反转字符串：s = "madam I'm adam"  reversed = s[::-1]
+
+6.in:可以检查字符串中是否存在子字符串，即in运算符。返回True或False
+
+7.len(a):Len函数将字符串或其他序列作为参数，并返回一个整数，即项目的长度。
+
+8.a.find(''): word = 'hello'   word.find('l')会输出2      #在字符串之中找到'l'的索引位置，注意方法find是如何对字符串对象word进行操作的，这两个对象通
+过使用“点”符号关联在一起：word.find(‘l’)
+
+9.>>> s = "Hello world"
+>>> s.upper()
+'HELLO WORLD'
+>>> s.title()(用标题的方式输出，也就是首字母大写)
+'Hello World'
+
+10.format():  print("You want {}. It costs ${:.2f}".format(product, price)）(price保留两位小数）
+ print('{:>10s} is {:<10d} years old.'.format('Bill',25))
+{:>10s}字符串10个空格宽,(包括对象)，右对齐(>)
+{:<10d}十进制10个空格宽(包括对象)，左对齐(>)
+
+11.string = "Python"(enumerate()函数返回两个值：元素的索引和元素本身。我可以使用它同时迭代索引和元素，执行双重赋值)
+for i, character in enumerate(string):
+    print(f"{i} is {character}")
+输出结果： 0 is P
+                 1 is y...
+
+12.split('参数字符'):Split函数将获取一个字符串，并根据参数字符将其拆分成包含多个新字符串部分的列表(列表是关键字！！！)，说白了split方法是返回一个
+列表。例:
+words = 'this is a test'.split()
+words => ['this', 'is', 'a', 'test']
+
+13.读写文件:(1)file_object = open(filename, mode)（filename为文件名字，mode为读取的方式，可以是读或者写)
+例:
+out_file = open("data.txt", "w")  # writing
+in_file = open(FILENAME, "r")  # reading 
+(2)完成对文件的数据读取或写入后，应始终将其关闭:file_object.close()
+例:
+out_file.close()
+in_file.close()
+(3)Read:'r'方法将整个文件内容读取到一个字符串中。仅当文件已打开以供读取时才起作用。请记住，文本文件中的所有内容都是字符串。你读到的所有东西都是
+字符串(包括数字)。如果写入文件，则只能写入字符串
+FILENAME = "testfile.txt"
+in_file = open(FILENAME)
+text = in_file.read()
+in_file.close()(一定要记得关闭文件，不然会发生数据的丢失)
+print(text)
+(4)如果您想要在现有文件(例如日志文件)的末尾添加数据，您可以使用‘a’模式表示“追加”。
+(5)写数据:一旦创建了一个打开以进行写入的文件对象，就可以通过添加关键字参数(如file=file_object)使用Print对其进行写入
+name = input("Name: ")
+out_file = open("name.txt", "w")
+print(name, file=out_file)
+out_file.close()
+
+14.try...except...:try包含我们希望在其执行过程中监视错误的代码,如果try中任何地方发生错误，Python都会寻找可以处理错误的处理程序。
+例：
+try:
+    number = int(input("? "))
+    print(10 / number)
+except ValueError:(没输入整数)
+    print("Not a valid integer")
+except ZeroDivisionError:(除数不能为0)
+    print("Can't divide by zero")
+except:(出现其他的错误)
+    print("Some other exception happened")
+
+数据结构：
+print(values,end=' ')(end这就是不换行的意思)
+15.列表：当您将列表命名为复数时，列表中的项是单数。例：for item in items   or    for dog in dogs  判断有没有某个字符串用"in"判断，计算列表长度用
+len()来判断。
+(1) [1, 2, 3] + [4] => [1, 2, 3, 4]
+     [1, 2, 3] * 2 => [1, 2, 3, 1, 2, 3]
+     1 in [1, 2, 3] => True
+     [1, 2, 3] < [1, 2, 4] => True
+(2)things = ['a', [1, 2, 3], 'z']  things[1][0]=1
+(3)min(values):列表的最小元素，必须都是同一类型    max(values):最大元素，也必须为同一个类型    sum(values):元素的总和，仅限数字
+(4)things = list('xyzabc')
+    things  ['x', 'y', 'z', 'a', 'b', 'c']
+    things.sort()
+    things ['a', 'b', 'c', 'x', 'y', 'z']
+(5).itemgetter方法：例 data = [['Derek', 7], ['Carrie', 8], ['Bob', 6], ['Aaron', 9]]正常用sort()函数会按照首字母来排序，如果想用年龄也就是数字
+来排序，就要用itemgetter方法   data.sort(key=itemgetter(1))(要调用库函数：from operator import itemgetter)
+                                                  [['Bob', 6], ['Derek', 7], ['Carrie', 8], ['Aaron', 9]]
+(6)x is y:执行引用相等，检查两个变量是否引用内存中的同一对象。
+numbers = [10, 20, 30]
+things = numbers
+new_things = [10, 20, 30]
+things == numbers      # True
+things is numbers      # True !!
+new_things == numbers  # True
+new_things is numbers  # False(只要没有出现new_things=numbers的语句，is一定返回false)
+(7)numbers = [10, 20, 30]
+    things = numbers(此现象不是函数的复制，而是别名)
+    numbers.append(40)
+    print(numbers)  # [10, 20, 30, 40]
+    print(things)   # [10, 20, 30, 40]
+(8)n for n in range ():先算for n in range，再算n for n
+[n ** 2 for n in range(1, 6)](请注意，我们只能更改正在迭代的值)
+returns [1, 4, 9, 16, 25]
+
+[x + y for x in range(1, 4) for y in range (1, 4)]
+等价于：
+things = []
+for x in range(1, 4):
+	  for y in range(1, 4):
+        things.append(x + y)
+=> [2, 3, 4, 3, 4, 5, 4, 5, 6]
+
+16.元组：元组就像不可变的列表，它们使用()而不是[](要记住是不可变的喔)
+(1)创建一个元组,对于元组，您可以将逗号视为构成元组的运算符，其中()只是充当分组：
+my_tuple = 1, 2  # creates (1, 2)
+my_tuple = (1,)  # creates (1) 
+my_tuple = 1,    # creates (1)
+my_tuple = (1)   # creates 1 not (1)(没有逗号，这不是创建一个元组)
+
+17.def box(height=10, width=20, length=30):
+     print(height, width, length)
+box()	# prints 10 20 30
+box(width=2, height=5) # prints 5 2 30(实参改变形参)
+
+18.字典：您可以将其视为一对，其中对中的第一个元素(key)用于检索第二个元素(value）
+(1).字典的创建：
+contacts = {'bill': '353-1234', 'rich': '269-1234', 'jane': '352-1234'}
+print(contacts)
+{'jane': '352-1234', 
+ 'bill': '353-1234', 
+ 'rich': '369-1234'}key必须是不可变的，字符串、整数、元组都可以。不允许使用列表(它们是可变的)
+(2)与列表一样，字典也是一种可变的数据结构。您可以通过各种操作(如索引分配)更改对象:
+my_dict = {'bill': 3, 'rich': 10}
+print(my_dict['bill'])	# prints 2
+my_dict['bill'] = 100
+print(my_dict['bill'])	# prints 100
+(3)各种方法以及函数：
+方法：
+len(my_dict)计算key的数量
+element in my_dict 查看字典中有没有key名为element的
+for key in range(my_dict) 遍历字典中的key
+函数：
+my_dict.clear()清空字典
+my_dict.sorted()只对key排序
+my_dict.update(other_dict)对于other_dict中的每个key，使用key/value替换my_dict
+my_dict.pop(key) 移除key，返回其value
+my_dict.items()遍历字典，所有key/value对均为元组
+my_dict.keys()所有的key
+my_dict.values()所有的value
+(4)1.for key in my_dict:
+          print(key) (输出所有的key)
+     2.for value in my_dict:
+          print(value)
+     3.for key, value in my_dict.items():
+           print(key, value)(输出所有的key/value对)    
