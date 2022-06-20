@@ -3,7 +3,7 @@ a  b  c  d  e  f
 0  1  2  3  4  5
 -6 -5 -4 -3 -2 -1
 
-除了索引，字符串还支持 切片。索引可以提取单个字符，切片 则提取子字符串：
+除了索引，字符串还支持 切片。索引可以提取单个字符，切片 则提取子字符串：//切片是左闭右开的区间，就是最右边的索引是取不到的
 
 >>> word[0:2]  # characters from position 0 (included) to 2 (excluded)
 'Py'
@@ -31,7 +31,88 @@ a  b  c  d  e  f
  0   1   2   3   4   5   6
 -6  -5  -4  -3  -2  -1
 
+列表
+Python 支持多种 复合 数据类型，可将不同值组合在一起。最常用的 列表 ，是用方括号标注，逗号分隔的一组值。列表 可以包含不同类型的元素，但一般情况下，各个元素的类型相同：
 
+>>> squares = [1, 4, 9, 16, 25]
+>>> squares
+[1, 4, 9, 16, 25]
+和字符串（及其他内置 sequence 类型）一样，列表也支持索引和切片：
+
+>>> squares[0]  # indexing returns the item
+1
+>>> squares[-1]
+25
+>>> squares[-3:]  # slicing returns a new list
+[9, 16, 25]
+切片操作返回包含请求元素的新列表。以下切片操作会返回列表的 浅拷贝：
+
+>>> squares[:]
+[1, 4, 9, 16, 25]
+列表还支持合并操作：
+
+>>> squares + [36, 49, 64, 81, 100]
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+与 immutable 字符串不同, 列表是 mutable 类型，其内容可以改变：
+
+>>> cubes = [1, 8, 27, 65, 125]  # something's wrong here
+>>> 4 ** 3  # the cube of 4 is 64, not 65!
+64
+>>> cubes[3] = 64  # replace the wrong value
+>>> cubes
+[1, 8, 27, 64, 125]
+append() 方法 可以在列表结尾添加新元素（详见后文）:
+
+>>> cubes.append(216)  # add the cube of 6
+>>> cubes.append(7 ** 3)  # and the cube of 7
+>>> cubes
+[1, 8, 27, 64, 125, 216, 343]
+为切片赋值可以改变列表大小，甚至清空整个列表：
+ 
+>>> letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+>>> letters
+['a', 'b', 'c', 'd', 'e', 'f', 'g']
+>>> # replace some values
+>>> letters[2:5] = ['C', 'D', 'E']
+>>> letters
+['a', 'b', 'C', 'D', 'E', 'f', 'g']
+>>> # now remove them
+>>> letters[2:5] = []
+>>> letters
+['a', 'b', 'f', 'g']
+>>> # clear the list by replacing all the elements with an empty list
+>>> letters[:] = []
+>>> letters
+[]
+内置函数 len() 也支持列表：
+
+>>> letters = ['a', 'b', 'c', 'd']
+>>> len(letters)
+4
+还可以嵌套列表（创建包含其他列表的列表），例如：
+
+>>> a = ['a', 'b', 'c']
+>>> n = [1, 2, 3]
+>>> x = [a, n]
+>>> x
+[['a', 'b', 'c'], [1, 2, 3]]
+>>> x[0]
+['a', 'b', 'c']
+>>> x[0][1]
+'b'
+
+循环
+py的循环例如while a<10://后面要加一个冒号代表循环
+判断循环的范围是通过缩进来判断的
+关键字参数 end 可以取消输出后面的换行, 或用另一个字符串结尾：
+>>> a, b = 0, 1
+>>> while a < 1000:
+...     print(a, end=',') //while自动换行，加上end=','之后就可以不换行
+...     a, b = b, a+b
+...
+0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,
+
+x = int(input("Please enter an integer: ")) //从键盘读入一个整数x
 
 1.如果字符串中需要撇号，请使用双引号。
 例："Python's a great language"
