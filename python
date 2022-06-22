@@ -272,6 +272,38 @@ print(hello_str[-1]) => prints d
 
 print(hello_str[11]) => ERROR
 
+# Fibonacci numbers module
+
+def fib(n):    # write Fibonacci series up to n
+    a, b = 0, 1
+    while a < n:
+        print(a, end=' ')
+        a, b = b, a+b
+    print()
+
+def fib2(n):   # return Fibonacci series up to n
+    result = []
+    a, b = 0, 1
+    while a < n:
+        result.append(a)
+        a, b = b, a+b
+    return result
+现在，进入 Python 解释器，用以下命令导入该模块：
+
+import fibo  // //py中调用文件就是先from (文件路径) import (.py的文件名称) as (你取的别名)，这个例子是因为当前就在该文件所在的目录，所以不需要from，且没有设置别名
+那么对象就相当于是fibo
+
+fibo.fib(1000) //相当于c中的对象调用其函数
+
+fibo.fib2(100)
+
+fibo.__name__
+
+如果经常使用某个函数，可以把它赋值给局部变量：
+
+fib = fibo.fib
+fib(500)
+
 5.切片是选择整个序列的子序列的能力,hellostring="hello world",若hellostring[6:10]就是worl(因为中间有个空格,而且切片这个方法是从6开始，在小于10的
 时候结束，也就是在9的时候结束) hellostring[:5]也就是从一开始到小于5的地方，就是"hello",hellostring[6:]也就是6开始到小于-1的地方(-1是最后一个字符
 "d"的下一位，所以此输出的东西就是world）
