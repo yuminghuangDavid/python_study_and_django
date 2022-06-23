@@ -392,6 +392,51 @@ divide("2", "1")
 
 如上所示，任何情况下都会执行 finally 子句。except 子句不处理两个字符串相除触发的 TypeError，因此会在 finally 子句执行后被重新触发。
 
+Class 对象
+类对象支持两种操作：属性引用和实例化。
+
+属性引用 使用 Python 中所有属性引用所使用的标准语法: obj.name。 有效的属性名称是类对象被创建时存在于类命名空间中的所有名称。 因此，如果类定义是这样的:
+
+class MyClass:
+    """A simple example class"""
+    i = 12345
+
+    def f(self):
+        return 'hello world'
+那么 MyClass.i 和 MyClass.f 就是有效的属性引用，将分别返回一个整数和一个函数对象。 类属性也可以被赋值，因此可以通过赋值来更改 MyClass.i 的值。 __doc__ 也是一个有效的属性，将返回所属类的文档字符串: "A simple example class"。
+
+举个上面i的例子：
+   class Car:
+      static_a = [] //相当于c++的静态变量，就是类外进行操作也能改变该值
+   a = Car()
+   b = Car()
+   a.append(1)
+   b.append(1)
+   //这时候的static_a = [1,1]
+   类的 实例化 使用函数表示法。 可以把类对象视为是返回该类的一个新实例的不带参数的函数。 举例来说（假设使用上述的类）:
+
+x = MyClass()
+创建类的新 实例 并将此对象分配给局部变量 x。
+
+实例化操作（“调用”类对象）会创建一个空对象。 许多类喜欢创建带有特定初始状态的自定义实例。 为此类定义可能包含一个名为 __init__() 的特殊方法，就像这样:
+
+def __init__(self):
+    self.data = []
+当一个类定义了 __init__() 方法时，类的实例化操作会自动为新创建的类实例发起调用 __init__()。 因此在这个示例中，可以通过以下语句获得一个经初始化的新实例:
+
+x = MyClass()
+当然，__init__() 方法还可以有额外参数以实现更高灵活性。 在这种情况下，提供给类实例化运算符的参数将被传递给 __init__()。 例如，:
+
+>>>
+class Complex:
+    def __init__(self, realpart, imagpart):
+        self.r = realpart
+        self.i = imagpart
+
+x = Complex(3.0, -4.5)
+x.r, x.i
+
+ 
 1.如果字符串中需要撇号，请使用双引号。
 例："Python's a great language"
 
