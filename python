@@ -244,7 +244,7 @@ a ^ b                              # letters in a or b but not both
 >>> a
 {'r', 'd'}
 
-字典
+3.字典
 字典 （参见 映射类型 --- dict） 也是一种常用的 Python 內置数据类型。其他语言可能把字典称为 联合内存 或 联合数组。与以连续整数为索引的序列不同，字典以 关键字 为索引，关键字通常是字符串或数字，也可以是其他任意不可变类型。只包含字符串、数字、元组的元组，也可以用作关键字。但如果元组直接或间接地包含了可变对象，就不能用作关键字。列表不能当关键字，因为列表可以用索引、切片、append() 、extend() 等方法修改。
 
 可以把字典理解为 键值对 的集合，但字典的键必须是唯一的。花括号 {} 用于创建空字典。另一种初始化字典的方式是，在花括号里输入逗号分隔的键值对，这也是字典的输出方式。
@@ -253,24 +253,6 @@ a ^ b                              # letters in a or b but not both
 
 对字典执行 list(d) 操作，返回该字典中所有键的列表，按插入次序排列（如需排序，请使用 sorted(d)）。检查字典里是否存在某个键，使用关键字 in。
 
-
-
-1.如果字符串中需要撇号，请使用双引号。
-例："Python's a great language"
-
-2.类型的强制转换：Int(Item)将Item转换为int。
-Float(Item)将Item转换为Float
-
-3.在python里面5/4=1.25,5//4=1,5**4=625(5的四次方)
-
-4.字符串的特定元素由方括号[]括起来的元素的索引访问
-hello_str = 'Hello World'
-
-print(hello_str[1])  => prints e
-
-print(hello_str[-1]) => prints d
-
-print(hello_str[11]) => ERROR
 
 # Fibonacci numbers module
 
@@ -303,6 +285,51 @@ fibo.__name__
 
 fib = fibo.fib
 fib(500)
+
+读写文件
+open() 返回一个 file object ，最常使用的是两个位置参数和一个关键字参数：open(filename, mode, encoding=None)
+
+f = open('workfile', 'w', encoding="utf-8")
+第一个实参是文件名字符串。第二个实参是包含描述文件使用方式字符的字符串。mode 的值包括 'r' ，表示文件只能读取；'w' 表示只能写入（现有同名文件会被覆盖）；'a' 表示打开文件并追加内容，任何写入的数据会自动添加到文件末尾。'r+' 表示打开文件进行读写。mode 实参是可选的，省略时的默认值为 'r'。
+
+通常情况下，文件是以 text mode 打开的，也就是说，你从文件中读写字符串，这些字符串是以特定的 encoding 编码的。如果没有指定 encoding ，默认的是与平台有关的（见 open() ）。因为 UTF-8 是现代事实上的标准，除非你知道你需要使用一个不同的编码，否则建议使用 encoding="utf-8" 。在模式后面加上一个 'b' ，可以用 binary mode 打开文件。二进制模式的数据是以 bytes 对象的形式读写的。在二进制模式下打开文件时，你不能指定 encoding 。
+
+在文本模式下读取文件时，默认把平台特定的行结束符（Unix 上为 \n, Windows 上为 \r\n）转换为 \n。在文本模式下写入数据时，默认把 \n 转换回平台特定结束符。这种操作方式在后台修改文件数据对文本文件来说没有问题，但会破坏 JPEG 或 EXE 等二进制文件中的数据。注意，在读写此类文件时，一定要使用二进制模式。
+
+在处理文件对象时，最好使用 with 关键字。优点是，子句体结束后，文件会正确关闭，即便触发异常也可以。而且，使用 with 相比等效的 try-finally 代码块要简短得多：
+
+with open('workfile', encoding="utf-8") as f:
+    read_data = f.read()
+
+# We can check that the file has been automatically closed.
+f.closed
+
+如果没有使用 with 关键字，则应调用 f.close() 关闭文件，即可释放文件占用的系统资源。
+
+警告 调用 f.write() 时，未使用 with 关键字，或未调用 f.close()，即使程序正常退出，也**可能** 导致 f.write() 的参数没有完全写入磁盘。
+通过 with 语句，或调用 f.close() 关闭文件对象后，再次使用该文件对象将会失败。
+
+f.close()
+f.read()
+
+
+
+1.如果字符串中需要撇号，请使用双引号。
+例："Python's a great language"
+
+2.类型的强制转换：Int(Item)将Item转换为int。
+Float(Item)将Item转换为Float
+
+3.在python里面5/4=1.25,5//4=1,5**4=625(5的四次方)
+
+4.字符串的特定元素由方括号[]括起来的元素的索引访问
+hello_str = 'Hello World'
+
+print(hello_str[1])  => prints e
+
+print(hello_str[-1]) => prints d
+
+print(hello_str[11]) => ERROR
 
 5.切片是选择整个序列的子序列的能力,hellostring="hello world",若hellostring[6:10]就是worl(因为中间有个空格,而且切片这个方法是从6开始，在小于10的
 时候结束，也就是在9的时候结束) hellostring[:5]也就是从一开始到小于5的地方，就是"hello",hellostring[6:]也就是6开始到小于-1的地方(-1是最后一个字符
