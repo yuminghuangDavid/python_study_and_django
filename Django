@@ -1,4 +1,8 @@
 ###Django的app创建
 1.Django创建app：python3 XXX startapp YYY//XXX是你要运行的脚本名字，YYY是你创建app的名字
 2.然后会生成一个YYY名字的文件夹
-3.
+3.admin.py是管理员页面，你要进入你的网站的管理员页面的话就是在你的域名后面加上admin，然后要创建一个管理员账号：python3 XXX createsuperuser //XXX就是运行的脚本名字
+4.创建你的超级用户信息,然后登录域名+admin就可以进入管理员页面了
+
+###创建一个自己的页面
+
