@@ -1,1 +1,4 @@
-Django创建app：python3 XXX startapp //XXX是你要运行的脚本名字
+###Django的app创建
+1.Django创建app：python3 XXX startapp YYY//XXX是你要运行的脚本名字，YYY是你创建app的名字
+2.然后会生成一个YYY名字的文件夹
+3.
