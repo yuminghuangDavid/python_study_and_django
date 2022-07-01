@@ -7,4 +7,11 @@
 ###创建一个自己的页面
 1.只需要操作四个文件：models.py(存储数据结构，就是存各种的class)  views.py(等于是class里面的各种函数，就是写一堆可以被用户访问的函数,函数返回的都是字符串)
 urls.py(路由，也就是用户点进去一个页面相当于点进去一个地址，那就需要看看这个地址匹配的是哪一个函数，这就是urls的功能)  templates(存网页模板，存html)
-2.
+2.写views.py:
+from django.http import HttpResponse 
+def index(request):
+  line1 = '<h1 style = "text-align: center">社会X少的奇妙历险</h1>'  //写一个大标题
+  line2 = '<img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx1.sinaimg.cn%2Fbmiddle%2F007P96ihly1gb148mqc3fj30c80c20sp.jpg&refer=http%3A%2F%2Fwx1.sina 
+  img.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1659255164&t=bf70fcfaed73561dd45169ba005a3ef4" width=501>' //传入一张图片，<img src="图片的网址 width=(
+  图片尺寸)"
+  return HttpResponse(line1 + line2) //返回字符串 
