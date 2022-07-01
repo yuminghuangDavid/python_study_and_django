@@ -45,6 +45,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [ 
-    path('',include('game.urls')), //这些大部分系统自带，只需要写当前这一行就可以了
+    path('',include('game.urls')), //这些大部分系统自带，只需要写当前这一行就可以了，这行就是调用文件夹game里面的urls.py
     path('admin/', admin.site.urls),                                                                                                                                        
 ]
