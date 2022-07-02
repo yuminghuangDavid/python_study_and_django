@@ -17,6 +17,11 @@ def index(request):
   图片尺寸)"
   return HttpResponse(line1 + line2) //返回字符串 
   
+  补充：
+  '<a href = "/play/">进入游戏</a>' //a href是一个链接，代表页面会有一个“进入游戏”的选项，点击后就会进入XXX/play/   XXX是域名
+  
+  
+  
 3.写完views我们就需要接受用户调用的这些函数，也就是写urls.py
 from django.urls import path
 from game.views import index //这句话就是要找到views里面的函数并且调用它，记得需要调用几个函数就得import几个函数
@@ -25,7 +30,7 @@ from game.views import index //这句话就是要找到views里面的函数并�
            path("", index, name = "index"), //模板，记住就行
    ]
   
-4.写完urls之后得把urls传到主要app的urls里面，这个只需要操作一个就可以了
+4.写完urls之后得把urls传到主要app的urls里面，这个只需要操作一次就可以了
 """acapp URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
