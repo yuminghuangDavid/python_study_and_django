@@ -76,7 +76,7 @@ consumers目录：管理websocket函数
 详细复习网址：
 https://www.acwing.com/activity/content/code/content/3594574/
 
-
+在创建py文件的时候，一定要创建一个__init__.py文件，这样在写py代码的时候才能import到东西，不然会报错
 
 
 
